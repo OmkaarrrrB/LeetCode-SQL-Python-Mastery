@@ -95,3 +95,27 @@ FROM
 WHERE
     t.transaction_id IS NULL
 GROUP BY customer_id;
+
+
+/*
+Question Link
+https://leetcode.com/problems/rising-temperature/description/?envType=study-plan-v2&envId=top-sql-50
+
+Question No:197
+Write a solution to find all dates' id with higher temperatures compared to its previous dates (yesterday).
+*/
+
+-- using self-join
+SELECT 
+    t1.id
+FROM
+    Weather t1
+        JOIN
+    Weather t2 ON DATE_ADD(t1.recordDate,
+        INTERVAL -1 DAY) = t2.recordDate
+WHERE
+    t1.temperature > t2.temperature;
+
+-- using Lag()
+select id from (select id,temperature,lag(temperature,1)over (order by recordDate) as prev_temp from Weather)
+as id where temperature>prev_temp
