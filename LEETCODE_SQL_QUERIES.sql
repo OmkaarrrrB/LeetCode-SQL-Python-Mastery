@@ -3,7 +3,7 @@ QUESTION LINK
 https://leetcode.com/problems/recyclable-and-low-fat-products/?envType=study-plan-v2&envId=top-sql-50
 
 Question 1757
-Write a solution to find the ids of products that are both low fat and recyclable.Return the result table in any 
+Write a solution to find the ids of products that are both low fat and recyclable.Return the result table in any order
 */
 select product_id from Products where low_fats = "Y" and recyclable ="Y";
 
@@ -29,3 +29,14 @@ it has a population of at least twenty-five million (i.e., 25000000).
 Write a solution to find the name, population, and area of the big countries.
 */
 select name ,population, area from World where area >=3000000 or population >=25000000;
+
+
+/*
+Question Link
+https://leetcode.com/problems/article-views-i/description/?envType=study-plan-v2&envId=top-sql-50
+
+Question No:1148
+Write a solution to find all the authors that viewed at least one of their own articles.
+Return the result table sorted by id in ascending order.
+*/
+select distinct(author_id) as id from Views where author_id=viewer_id order by author_id ;
