@@ -66,3 +66,13 @@ Write a solution to show the unique ID of each user, If a user does not have a u
 Return the result table in any order.
 */
 select u.unique_id,e.name from EmployeeUNI u right join Employees e on u.id=e.id; 
+
+
+/*
+Question Link
+https://leetcode.com/problems/product-sales-analysis-i/description/?envType=study-plan-v2&envId=top-sql-50
+
+Question No 1068
+Write a solution to report the product_name, year, and price for each sale_id in the Sales table.
+*/
+select p.product_name, s.year, s.price from Sales s join Product p on s.product_id=p.product_id;
