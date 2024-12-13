@@ -76,3 +76,22 @@ Question No 1068
 Write a solution to report the product_name, year, and price for each sale_id in the Sales table.
 */
 select p.product_name, s.year, s.price from Sales s join Product p on s.product_id=p.product_id;
+
+
+/*
+Question Link
+https://leetcode.com/problems/customer-who-visited-but-did-not-make-any-transactions/description/?envType=study-plan-v2&envId=top-sql-50
+
+Question No 1581
+Write a solution to find the IDs of the users who visited without making any transactions 
+and the number of times they made these types of visits.
+*/
+SELECT 
+    customer_id, COUNT(customer_id) AS count_no_trans
+FROM
+    Visits v
+        LEFT JOIN
+    Transactions t ON v.visit_id = t.visit_id
+WHERE
+    t.transaction_id IS NULL
+GROUP BY customer_id;
