@@ -144,3 +144,12 @@ FROM
         AND a.activity_type = 'start'
         AND b.activity_type = 'end'
 GROUP BY 1;
+
+/*
+Question Link
+https://leetcode.com/problems/employee-bonus/description/?envType=study-plan-v2&envId=top-sql-50
+
+Question no:577
+Write a solution to report the name and bonus amount of each employee with a bonus less than 1000.
+*/
+select e.name,b.bonus from Employee e left join Bonus b on e.empId=b.empId where bonus<1000 or bonus is null;
