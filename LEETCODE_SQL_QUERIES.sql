@@ -213,3 +213,21 @@ FROM
         AND su.subject_name = e.subject_name
 GROUP BY s.student_id , su.subject_name
 ORDER BY s.student_id , su.subject_name;
+
+
+/*
+Question Link
+https://leetcode.com/problems/managers-with-at-least-5-direct-reports/submissions/1477875963/?envType=study-plan-v2&envId=top-sql-50
+
+Question No:570
+Write a solution to find managers with at least five direct reports.
+*/
+SELECT 
+    e1.name
+FROM
+    Employee e1
+        JOIN
+    Employee e2 ON e1.id = e2.managerId
+GROUP BY e2.managerId
+HAVING COUNT(e2.managerId) >= 5;
+
