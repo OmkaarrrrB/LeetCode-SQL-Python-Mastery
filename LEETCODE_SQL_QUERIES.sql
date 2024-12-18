@@ -231,3 +231,20 @@ FROM
 GROUP BY e2.managerId
 HAVING COUNT(e2.managerId) >= 5;
 
+
+
+/*
+Question Link
+https://leetcode.com/problems/not-boring-movies/description/?envType=study-plan-v2&envId=top-sql-50
+
+Question NO:620
+Write a solution to report the movies with an odd-numbered ID and a description that is not "boring".
+Return the result table ordered by rating in descending order.
+*/
+SELECT 
+    *
+FROM
+    Cinema
+WHERE
+    id % 2 != 0 AND description != 'boring'
+ORDER BY rating DESC;
