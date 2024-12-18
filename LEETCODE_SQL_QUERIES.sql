@@ -248,3 +248,25 @@ FROM
 WHERE
     id % 2 != 0 AND description != 'boring'
 ORDER BY rating DESC;
+
+
+
+/*
+Question Link
+https://leetcode.com/problems/average-selling-price/?envType=study-plan-v2&envId=top-sql-50
+
+Question No:1251
+Write a solution to find the average selling price for each product. average_price should be rounded to 2 decimal places. If a product does not have any sold units, its average selling price is assumed to be 0.
+Return the result table in any order.
+*/
+SELECT 
+    p.product_id AS product_id,
+    IFNULL(ROUND(SUM(p.price * u.units) / NULLIF(SUM(u.units), 0),
+                    2),
+            0) AS average_price
+FROM
+    Prices p
+        LEFT JOIN
+    UnitsSold u ON u.product_id = p.product_id
+        AND u.purchase_date BETWEEN p.start_date AND p.end_date
+GROUP BY p.product_id;
