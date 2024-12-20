@@ -270,3 +270,22 @@ FROM
     UnitsSold u ON u.product_id = p.product_id
         AND u.purchase_date BETWEEN p.start_date AND p.end_date
 GROUP BY p.product_id ;
+
+
+/*
+Question Link:
+https://leetcode.com/problems/project-employees-i/?envType=study-plan-v2&envId=top-sql-50
+
+Question No:1075
+Write an SQL query that reports the average experience years of all the employees for each project, rounded to 2 digits.
+Return the result table in any order.
+*/
+SELECT 
+    project_id, ROUND(AVG(experience_years), 2) AS average_years
+FROM
+    Project p
+        JOIN
+    Employee e ON p.employee_id = e.employee_id
+GROUP BY p.project_id;
+
+
