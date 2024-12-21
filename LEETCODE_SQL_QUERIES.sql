@@ -232,6 +232,7 @@ GROUP BY e2.managerId
 HAVING COUNT(e2.managerId) >= 5;
 
 
+-- Basic Aggregate Functions
 
 /*
 Question Link
@@ -351,3 +352,19 @@ SELECT
 FROM
     Transactions
 GROUP BY month , country;
+
+
+-- Sorting and Grouping
+
+/*
+Question Link:
+https://leetcode.com/problems/number-of-unique-subjects-taught-by-each-teacher/?envType=study-plan-v2&envId=top-sql-50
+
+Question No:2356
+Write a solution to calculate the number of unique subjects each teacher teaches in the university.
+*/
+SELECT DISTINCT
+    teacher_id, COUNT(DISTINCT subject_id) AS cnt
+FROM
+    Teacher
+GROUP BY teacher_id;
