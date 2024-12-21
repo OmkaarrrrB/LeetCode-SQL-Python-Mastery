@@ -289,3 +289,24 @@ FROM
 GROUP BY p.project_id;
 
 
+/*
+Question Link:
+https://leetcode.com/problems/percentage-of-users-attended-a-contest/submissions/1484729890/?envType=study-plan-v2&envId=top-sql-50
+
+Question no :1633
+Write a solution to find the percentage of the users registered in each contest rounded to two decimals.
+Return the result table ordered by percentage in descending order. In case of a tie, order it by contest_id in ascending order.
+*/
+SELECT DISTINCT
+    (contest_id),
+    ROUND(COUNT(r.user_id) / (SELECT 
+                    COUNT(DISTINCT (user_id))
+                FROM
+                    Users) * 100,
+            2) AS percentage
+FROM
+    Users u
+        JOIN
+    Register r ON u.user_id = r.user_id
+GROUP BY contest_id
+ORDER BY percentage DESC , contest_id ASC;
