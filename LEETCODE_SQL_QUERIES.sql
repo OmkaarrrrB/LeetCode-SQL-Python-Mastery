@@ -387,6 +387,20 @@ WHERE
             product_id, MIN(year)
         FROM
             Sales
-        GROUP BY product_id)
+        GROUP BY product_id);
         
-        
+
+/*
+Question Link:
+https://leetcode.com/problems/classes-more-than-5-students/submissions/1485605347/?envType=study-plan-v2&envId=top-sql-50
+
+Question No:596
+Write a solution to find all the classes that have at least five students.
+Return the result table in any order.
+*/        
+SELECT 
+    class
+FROM
+    Courses
+GROUP BY class
+HAVING COUNT(student) >= 5;
