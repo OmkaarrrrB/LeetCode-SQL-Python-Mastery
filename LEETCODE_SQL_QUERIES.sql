@@ -404,3 +404,19 @@ FROM
     Courses
 GROUP BY class
 HAVING COUNT(student) >= 5;
+
+/*
+Question Link:
+https://leetcode.com/problems/find-followers-count/submissions/1485607984/?envType=study-plan-v2&envId=top-sql-50*
+
+Question No:729
+Write a solution that will, for each user, return the number of followers.
+Return the result table ordered by user_id in ascending order.
+*/
+
+SELECT 
+    user_id, COUNT(follower_id) AS followers_count
+FROM
+    Followers
+GROUP BY user_id
+ORDER BY user_id;
