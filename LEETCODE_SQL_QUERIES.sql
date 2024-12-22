@@ -420,3 +420,23 @@ FROM
     Followers
 GROUP BY user_id
 ORDER BY user_id;
+
+/*
+Question Link:
+https://leetcode.com/problems/biggest-single-number/submissions/1485622213/?envType=study-plan-v2&envId=top-sql-50
+
+Question No:619
+A single number is a number that appeared only once in the MyNumbers table.
+Find the largest single number. If there is no single number, report null.
+*/
+SELECT 
+    CASE
+        WHEN COUNT(num) = 1 THEN num
+        ELSE NULL
+    END AS num
+FROM
+    MyNumbers
+GROUP BY num
+ORDER BY num DESC
+LIMIT 1;
+
