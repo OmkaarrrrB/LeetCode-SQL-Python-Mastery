@@ -440,3 +440,21 @@ GROUP BY num
 ORDER BY num DESC
 LIMIT 1;
 
+/*
+Question Link:
+https://leetcode.com/problems/customers-who-bought-all-products/submissions/1485640375/?envType=study-plan-v2&envId=top-sql-50
+
+Question No:1045
+Write a solution to report the customer ids from the Customer table that bought all the products in the Product table.
+Return the result table in any order.
+*/
+SELECT 
+    customer_id
+FROM
+    Customer
+GROUP BY customer_id
+HAVING COUNT(DISTINCT product_key) = (SELECT 
+        COUNT(DISTINCT product_key)
+    FROM
+        Product);
+
